@@ -1,3 +1,5 @@
+using JRSEstudoMvcWeb_Aplicacao.Calculadora;
+using JRSEstudoMvcWeb_Aplicacao.Calculadora.Iterfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JRSEstudoMvcWeb.Controllers
@@ -6,37 +8,18 @@ namespace JRSEstudoMvcWeb.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+        private IAplicCalculadora _aplicCalculadora;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(IAplicCalculadora aplicCalculadora)
         {
-            _logger = logger;
+            _aplicCalculadora = aplicCalculadora;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
-        [Route("Somar")]
+        [Route("Calculadora")]
         [HttpPost]
-        public decimal Somar(decimal primeiroNumero, decimal segundoNumero)
+        public decimal Calculadora(decimal primeiroNumero, operacoes operacao, decimal segundoNumero)
         {
-
-            var resultado = primeiroNumero + segundoNumero;
-
-            return resultado;
+            return _aplicCalculadora.Calculador(primeiroNumero, operacao, segundoNumero);
         }
     }
 }
