@@ -29,5 +29,14 @@ namespace JRSEstudoMvcWeb.Controllers
             })
             .ToArray();
         }
+        [Route("Somar")]
+        [HttpPost]
+        public decimal Somar(decimal primeiroNumero, decimal segundoNumero)
+        {
+
+            var resultado = primeiroNumero + segundoNumero;
+
+            return resultado;
+        }
     }
 }
