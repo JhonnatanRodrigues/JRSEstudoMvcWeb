@@ -1,5 +1,4 @@
 ﻿using JRSEstudoMvcWeb_Dominio.Usuarios;
-using JRSEstudoMvcWeb_Repositorio.Configs.Usuarios;
 using Microsoft.EntityFrameworkCore;
 
 namespace JRSEstudoMvcWeb_Repositorio.Configs

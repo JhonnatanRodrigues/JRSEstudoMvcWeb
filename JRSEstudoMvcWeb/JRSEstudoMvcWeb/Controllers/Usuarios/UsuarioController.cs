@@ -1,5 +1,6 @@
 ﻿using JRSEstudoMvcWeb_Aplicacao.Usuarios;
 using JRSEstudoMvcWeb_Dominio.Usuarios;
+using JRSEstudoMvcWeb_Dominio.Usuarios.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JRSEstudoMvcWeb.Controllers.Usuarios
@@ -16,9 +17,15 @@ namespace JRSEstudoMvcWeb.Controllers.Usuarios
         }
 
         [HttpGet]
-        public Usuario Usuarios()
+        public List<Usuario> ListarUsuarios()
         {
-            return _aplicUsuario.buscar();
+            return _aplicUsuario.ListarUsuarios();
+        }
+
+        [HttpPut]
+        public List<Usuario> ListarUsuarios([FromBody] UsuarioFiltroDto filtros)
+        {
+            return _aplicUsuario.BuscarUsuario(filtros);
         }
     }
 }

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JRSEstudoMvcWeb_Aplicacao\JRSEstudoMvcWeb_Aplicacao.csproj" />
     <ProjectReference Include="..\JRSEstudoMvcWeb_Dominio\JRSEstudoMvcWeb_Dominio.csproj" />
   </ItemGroup>
 

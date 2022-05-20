@@ -1,9 +1,5 @@
 ﻿using JRSEstudoMvcWeb_Dominio.Usuarios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using JRSEstudoMvcWeb_Dominio.Usuarios.Dtos;
 
 namespace JRSEstudoMvcWeb_Aplicacao.Usuarios
 {
@@ -16,12 +12,16 @@ namespace JRSEstudoMvcWeb_Aplicacao.Usuarios
             _repUsuario = repUsuario;
         }
 
-        public Usuario buscar()
+        public List<Usuario> ListarUsuarios()
         {
-            var tag = _repUsuario.GetAll();
-            var ret = tag.Result.ToList();
+            var ret = _repUsuario.GetAll().Result.ToList();
 
-            return ret.FirstOrDefault();
+            return ret;
+        }
+
+        public List<Usuario> BuscarUsuario(UsuarioFiltroDto filtros)
+        {
+            return _repUsuario.GetFilter(filtros);
         }
     }
 }

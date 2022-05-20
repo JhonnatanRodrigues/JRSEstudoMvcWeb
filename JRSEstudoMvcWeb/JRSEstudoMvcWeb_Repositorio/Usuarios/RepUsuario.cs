@@ -1,6 +1,6 @@
 ﻿using JRSEstudoMvcWeb_Dominio.Usuarios;
+using JRSEstudoMvcWeb_Dominio.Usuarios.Dtos;
 using JRSEstudoMvcWeb_Repositorio.Configs;
-using JRSEstudoMvcWeb_Repositorio.Configs.Usuarios;
 using Microsoft.EntityFrameworkCore;
 
 namespace JRSEstudoMvcWeb_Repositorio.Usuarios
@@ -36,6 +36,14 @@ namespace JRSEstudoMvcWeb_Repositorio.Usuarios
         public async Task<Usuario> GetById(int id)
         {
             return await _Db.Usuario.FindAsync(id);
+        }
+
+        public List<Usuario> GetFilter(UsuarioFiltroDto filtros)
+        {
+            return _Db.Usuario.Where(x => ((!filtros.CodigoUsuario.HasValue) ? !filtros.CodigoUsuario.HasValue : x.IDUSUARIO == filtros.CodigoUsuario) &&
+                                              ((filtros.NomeUsuario == null) ? filtros.NomeUsuario == null : x.NOMEUSUARIO == filtros.NomeUsuario) &&
+                                              ((filtros.SobrenomeUsuario == null) ? filtros.SobrenomeUsuario == null : x.SOBRENOMEUSUARIO == filtros.SobrenomeUsuario) &&
+                                              ((!filtros.IdadeUsuario.HasValue) ? !filtros.IdadeUsuario.HasValue : x.Idade == filtros.IdadeUsuario)).ToList();
         }
 
         public async Task Update(Usuario usuario)

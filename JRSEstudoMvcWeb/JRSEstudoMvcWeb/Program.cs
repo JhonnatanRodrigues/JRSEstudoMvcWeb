@@ -1,5 +1,3 @@
-using JRSEstudoMvcWeb_Aplicacao.Calculadoras;
-using JRSEstudoMvcWeb_Aplicacao.Calculadoras.Iterfaces;
 using JRSEstudoMvcWeb_Aplicacao.Usuarios;
 using JRSEstudoMvcWeb_Dominio.Usuarios;
 using JRSEstudoMvcWeb_Repositorio.Configs;
@@ -15,7 +13,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ContextoBanco>(x => x.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
-builder.Services.AddScoped<IAplicCalculadora, AplicCalculadora>();
 builder.Services.AddScoped<IAplicUsuario, AplicUsuario>();
 builder.Services.AddScoped<IRepUsuario, RepUsuario>();
 

@@ -1,9 +1,11 @@
 ﻿using JRSEstudoMvcWeb_Dominio.Usuarios;
+using JRSEstudoMvcWeb_Dominio.Usuarios.Dtos;
 
 namespace JRSEstudoMvcWeb_Aplicacao.Usuarios
 {
     public interface IAplicUsuario
     {
-        Usuario buscar();
+        List<Usuario> ListarUsuarios();
+        List<Usuario> BuscarUsuario(UsuarioFiltroDto filtros);
     }
 }

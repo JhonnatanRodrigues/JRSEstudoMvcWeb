@@ -1,4 +1,6 @@
-﻿namespace JRSEstudoMvcWeb_Dominio.Usuarios
+﻿using JRSEstudoMvcWeb_Dominio.Usuarios.Dtos;
+
+namespace JRSEstudoMvcWeb_Dominio.Usuarios
 {
     public interface IRepUsuario
     {
@@ -8,5 +10,6 @@
         Task<Usuario> Created(Usuario usuario);
         Task Update(Usuario usuario);
         Task Delete(int id);
+        List<Usuario> GetFilter(UsuarioFiltroDto filtros);
     }
 }
