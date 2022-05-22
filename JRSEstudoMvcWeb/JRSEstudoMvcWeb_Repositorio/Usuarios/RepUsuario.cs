@@ -23,7 +23,7 @@ namespace JRSEstudoMvcWeb_Repositorio.Usuarios
 
         public async Task Delete(int id)
         {
-            var usuarioDelete = await _Db.Usuario.FindAsync(id);
+            var usuarioDelete = _Db.Usuario.FindAsync(id).Result;
             _Db.Usuario.Remove(usuarioDelete);
             await _Db.SaveChangesAsync();
         }

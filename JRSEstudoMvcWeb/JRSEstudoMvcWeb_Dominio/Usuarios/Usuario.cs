@@ -18,5 +18,8 @@ namespace JRSEstudoMvcWeb_Dominio.Usuarios
 
         [Column("idadeusuario")]
         public int Idade { get; set; }
+
+        [Column("datanacimentousuario")]
+        public DateTime DataNacimento { get; set; }
     }
 }
